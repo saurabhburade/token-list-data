@@ -55,9 +55,7 @@ const fetchbsctokens = async () => {
             source: "dexscreener",
             liquidity: dexscreener.data.pairs[0].liquidity.usd,
           },
-          dexguru: {
-            ...dexguru.data,
-          },
+          dexguru:dexguru ? dexguru.data : null,
           paraswap: paraswap ? paraswap.data : null,
         };
         // console.log(tokenData);
