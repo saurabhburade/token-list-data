@@ -1,14 +1,14 @@
-name: Fetch and update LP APRs
+name: Fetch and update Token Prices
 
 on:
   workflow_dispatch:
   schedule:
-    # RUNS EVERY 2HR INTERVAL
+    # 02:15 UTC
     # GitHub Actions might be delayed if time is at exact hour
-    - cron: "0 */2 * * *"
+    - cron: '15 02 * * *'
 
 jobs:
-  updateLPsAPRs:
+  updateTokenPrices:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
