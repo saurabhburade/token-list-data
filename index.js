@@ -86,30 +86,7 @@ const fetchbsctokens = async () => {
         });
         console.log("###__NO_LIQUIDITY_DEXGURU__##");
       }
-      // if (dexscreener.data && dexscreener.data.pairs.length) {
-      //   const tokenData = {
-      //     ...token,
-      //     priceUsd: dexscreener.data.pairs[0].priceUsd,
 
-      //     dexscreener: {
-      //       priceUsd: dexscreener.data.pairs[0].priceUsd,
-      //       source: "dexscreener",
-      //       liquidity: dexscreener.data.pairs[0].liquidity.usd,
-      //     },
-      //     dexguru: dexguru ? dexguru.data : null,
-      //     paraswap: paraswap ? paraswap.data : null,
-      //   };
-      //   // console.log(tokenData);
-      //   processedTokens.push(tokenData);
-      //   console.timeEnd("PRICEFETCH" + index);
-      // } else {
-      //   processedTokens.push({
-      //     ...token,
-      //     dexguru: dexguru ? dexguru.data : null,
-      //     paraswap: paraswap ? paraswap.data : null,
-      //   });
-      //   console.timeEnd("PRICEFETCH" + index);
-      // }
       sleep(500);
       console.timeEnd("PRICEFETCH" + index);
     } catch (error) {
