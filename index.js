@@ -52,12 +52,13 @@ const fetchbsctokens = async () => {
 
         const tokenData = {
           ...token,
-          priceUsd: dexscreener.data.pairs[0].priceUsd,
-          dexscreener: {
-            priceUsd: dexscreener.data.pairs[0].priceUsd,
-            source: "dexscreener",
-            liquidity: dexscreener.data.pairs[0].liquidity.usd,
-          },
+          dexscreener: dexscreener.data.pairs.length
+            ? {
+                priceUsd: dexscreener.data.pairs[0].priceUsd,
+                source: "dexscreener",
+                liquidity: dexscreener.data.pairs[0].liquidity.usd,
+              }
+            : null,
           dexguru: dexguru ? dexguru.data : null,
           paraswap: paraswap
             ? {
