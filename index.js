@@ -11,7 +11,7 @@ function sleep(delay) {
   console.log("____SLEEEP___END");
 }
 const fetchbsctokens = async () => {
-  const tokensChunksArray = _.chunk(BSC_MAINNET_TOKEN_LIST.tokens, 10);
+  const tokensChunksArray = _.chunk(BSC_MAINNET_TOKEN_LIST.tokens, 1000);
   let processedTokens = [];
   for (let index = 0; index < tokensChunksArray[0].length; index++) {
     const token = tokensChunksArray[0][index];
@@ -71,12 +71,12 @@ const fetchbsctokens = async () => {
         });
         console.timeEnd("PRICEFETCH" + index);
       }
-      sleep(1000);
+      sleep(900);
     } catch (error) {
       console.log({ error });
     }
   }
-  fs.writeFile("./tokens.json", JSON.stringify(processedTokens), (err) => {
+  fs.writeFile("./bsc-tokens.json", JSON.stringify(processedTokens), (err) => {
     console.log({ err });
   });
 };
