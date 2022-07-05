@@ -30,7 +30,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          author: TokenPrice Bot <tokenpricebot-12345@protonmail.com>
           delete-branch: true
           commit-message: "chore: Update Tokens"
           title: "chore: Update Tokens"
