@@ -11,16 +11,14 @@ function sleep(delay) {
   console.log("____SLEEEP___END");
 }
 const fetchbsctokens = async () => {
-  const tokensChunksArray = _.chunk(BSC_MAINNET_TOKEN_LIST.tokens, 1000);
+  // const tokensChunksArray = _.chunk(BSC_MAINNET_TOKEN_LIST.tokens, 10);
   let processedTokens = [];
-  for (let index = 0; index < tokensChunksArray[0].length; index++) {
-    const token = tokensChunksArray[0][index];
+  console.time("TOTAL_TIME");
+  for (let index = 0; index < BSC_MAINNET_TOKEN_LIST.tokens.length; index++) {
+    const token = BSC_MAINNET_TOKEN_LIST.tokens[index];
     try {
       console.time("PRICEFETCH" + index);
-      const dexscreener = await axios
-        .get(`https://api.dexscreener.com/latest/dex/tokens/${token.address}`)
-        .then((res) => res)
-        .catch((err) => null);
+
       const dexguru = await axios
         .get(
           `https://api.dev.dex.guru/v1/chain/${token.chainId}/tokens/${token.address}/market`,
@@ -33,45 +31,86 @@ const fetchbsctokens = async () => {
         )
         .then((res) => res)
         .catch((err) => null);
-      const paraswap = await axios
-        .get(
-          `https://apiv5.paraswap.io/prices/?srcToken=${
-            token.address
-          }&destToken=0x55d398326f99059fF775485246999027B3197955&amount=${10 **
-            token.decimals}&srcDecimals=${
-            token.decimals
-          }&destDecimals=18&side=SELL&network=56`
-        )
-        .then((res) => res)
-        .catch((err) => null);
+
       console.log(index + "_____FETCHING___DATA__FOR___:" + token.name);
-      if (dexscreener.data && dexscreener.data.pairs.length) {
+      if (dexguru && dexguru.data.liquidity_usd > 10000) {
+        const dexscreener = await axios
+          .get(`https://api.dexscreener.com/latest/dex/tokens/${token.address}`)
+          .then((res) => res)
+          .catch((err) => null);
+        const paraswap = await axios
+          .get(
+            `https://apiv5.paraswap.io/prices/?srcToken=${
+              token.address
+            }&destToken=0x55d398326f99059fF775485246999027B3197955&amount=${10 **
+              token.decimals}&srcDecimals=${
+              token.decimals
+            }&destDecimals=18&side=SELL&network=56`
+          )
+          .then((res) => res)
+          .catch((err) => null);
+
         const tokenData = {
           ...token,
           priceUsd: dexscreener.data.pairs[0].priceUsd,
-
           dexscreener: {
             priceUsd: dexscreener.data.pairs[0].priceUsd,
             source: "dexscreener",
             liquidity: dexscreener.data.pairs[0].liquidity.usd,
           },
-          dexguru:dexguru ? dexguru.data : null,
-          paraswap: paraswap ? paraswap.data : null,
+          dexguru: dexguru ? dexguru.data : null,
+          paraswap: paraswap
+            ? {
+                srcToken: paraswap.data.priceRoute.srcToken,
+                network: paraswap.data.priceRoute.network,
+                destToken: paraswap.data.priceRoute.destToken,
+                destDecimals: paraswap.data.priceRoute.destDecimals,
+                srcDecimals: paraswap.data.priceRoute.srcDecimals,
+                destAmount: paraswap.data.priceRoute.destAmount,
+                srcAmount: paraswap.data.priceRoute.srcAmount,
+                srcUSD: paraswap.data.priceRoute.srcUSD,
+                maxImpactReached: paraswap.data.priceRoute.maxImpactReached,
+
+                priceUsd: paraswap.data.priceRoute.destUSD,
+              }
+            : null,
         };
         // console.log(tokenData);
         processedTokens.push(tokenData);
-        console.timeEnd("PRICEFETCH" + index);
       } else {
         processedTokens.push({
           ...token,
-          dexguru: {
-            ...dexguru.data,
-          },
-          paraswap: paraswap ? paraswap.data : null,
+          dexguru: dexguru ? dexguru.data : null,
+          issue: "Inconsitent Liquidity",
         });
-        console.timeEnd("PRICEFETCH" + index);
+        console.log("###__NO_LIQUIDITY_DEXGURU__##");
       }
-      sleep(900);
+      // if (dexscreener.data && dexscreener.data.pairs.length) {
+      //   const tokenData = {
+      //     ...token,
+      //     priceUsd: dexscreener.data.pairs[0].priceUsd,
+
+      //     dexscreener: {
+      //       priceUsd: dexscreener.data.pairs[0].priceUsd,
+      //       source: "dexscreener",
+      //       liquidity: dexscreener.data.pairs[0].liquidity.usd,
+      //     },
+      //     dexguru: dexguru ? dexguru.data : null,
+      //     paraswap: paraswap ? paraswap.data : null,
+      //   };
+      //   // console.log(tokenData);
+      //   processedTokens.push(tokenData);
+      //   console.timeEnd("PRICEFETCH" + index);
+      // } else {
+      //   processedTokens.push({
+      //     ...token,
+      //     dexguru: dexguru ? dexguru.data : null,
+      //     paraswap: paraswap ? paraswap.data : null,
+      //   });
+      //   console.timeEnd("PRICEFETCH" + index);
+      // }
+      sleep(500);
+      console.timeEnd("PRICEFETCH" + index);
     } catch (error) {
       console.log({ error });
     }
@@ -79,6 +118,7 @@ const fetchbsctokens = async () => {
   fs.writeFile("./bsc-tokens.json", JSON.stringify(processedTokens), (err) => {
     console.log({ err });
   });
+  console.timeEnd("TOTAL_TIME");
 };
 
 fetchbsctokens();
