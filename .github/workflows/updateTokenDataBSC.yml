@@ -1,4 +1,4 @@
-name: Fetch and update Token Prices
+name: BSC Fetch and update Token Prices
 
 on:
   workflow_dispatch:

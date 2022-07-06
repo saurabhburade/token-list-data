@@ -13,7 +13,7 @@ function sleep(delay) {
 const fetchethtokens = async () => {
   let processedTokens = [];
   console.time("TOTAL_TIME");
-  for (let index = 0; index < 5; index++) {
+  for (let index = 0; index < ETH_MAINNET_TOKEN_LIST.tokens.length; index++) {
     const token = ETH_MAINNET_TOKEN_LIST.tokens[index];
     try {
       console.time("PRICEFETCH" + index);
