@@ -1,0 +1,113 @@
+[
+  {
+    "chainId": 1,
+    "address": "0x5a9bf6badcd24fe0d58e1087290c2fe2c728736a",
+    "name": "Block 18",
+    "symbol": "18C",
+    "decimals": 18,
+    "logoURI": "https://assets.coingecko.com/coins/images/7605/thumb/block_18.jpg?1548828772",
+    "dexguru": null,
+    "issue": "Inconsitent Liquidity"
+  },
+  {
+    "chainId": 1,
+    "address": "0x37c997b35c619c21323f3518b9357914e8b99525",
+    "name": "Unipilot",
+    "symbol": "PILOT",
+    "decimals": 18,
+    "logoURI": "https://assets.coingecko.com/coins/images/17235/thumb/QmSjCnb74Q88o9gcTMMYNggj6BDkFEPukAZ5nWrhPaRxoW.png?1626923517",
+    "dexscreener": {
+      "priceUsd": "0.7286",
+      "source": "dexscreener",
+      "liquidity": 421004
+    },
+    "dexguru": {
+      "address": "0x37c997b35c619c21323f3518b9357914e8b99525",
+      "volume_24h": 61.302338415383076,
+      "liquidity": 88.109097845784,
+      "volume_24h_usd": 69146.38836921094,
+      "liquidity_usd": 100469.78162874,
+      "price_usd": 0.7260297280577314,
+      "volume_24h_delta": 1.3973067638876688,
+      "liquidity_24h_delta": -0.14705066349807258,
+      "price_24h_delta": -0.10176917234830785,
+      "volume_24h_delta_usd": 1.4629583458737898,
+      "liquidity_24h_delta_usd": -0.1429887757672241,
+      "price_24h_delta_usd": -0.09749164656551379,
+      "timestamp": 1657056900
+    },
+    "paraswap": null
+  },
+  {
+    "chainId": 1,
+    "address": "0x1c4481750daa5ff521a2a7490d9981ed46465dbd",
+    "name": "Blockmason Credit Protocol",
+    "symbol": "BCPT",
+    "decimals": 18,
+    "logoURI": "https://assets.coingecko.com/coins/images/1022/thumb/mason.jpg?1547034948",
+    "dexguru": {
+      "address": "0x1c4481750daa5ff521a2a7490d9981ed46465dbd",
+      "volume_24h": 0,
+      "liquidity": 0.045358656218431,
+      "volume_24h_usd": 0,
+      "liquidity_usd": 139.29747486479,
+      "price_usd": 0.0003420916084183804,
+      "volume_24h_delta": 0,
+      "liquidity_24h_delta": 0,
+      "price_24h_delta": 0,
+      "volume_24h_delta_usd": 0,
+      "liquidity_24h_delta_usd": 0,
+      "price_24h_delta_usd": 0,
+      "timestamp": 1618008708
+    },
+    "issue": "Inconsitent Liquidity"
+  },
+  {
+    "chainId": 1,
+    "address": "0xf51ebf9a26dbc02b13f8b3a9110dac47a4d62d78",
+    "name": "APIX",
+    "symbol": "APIX",
+    "decimals": 18,
+    "logoURI": "https://assets.coingecko.com/coins/images/10124/thumb/5sSKmtlA_400x400.png?1576126911",
+    "dexguru": {
+      "address": "0xf51ebf9a26dbc02b13f8b3a9110dac47a4d62d78",
+      "volume_24h": 0,
+      "liquidity": 2.48732112e-10,
+      "volume_24h_usd": 0,
+      "liquidity_usd": 5.8724103427834e-7,
+      "price_usd": 0.019982277260531263,
+      "volume_24h_delta": 0,
+      "liquidity_24h_delta": 0,
+      "price_24h_delta": 0,
+      "volume_24h_delta_usd": 0,
+      "liquidity_24h_delta_usd": 0,
+      "price_24h_delta_usd": 0,
+      "timestamp": 1636576558
+    },
+    "issue": "Inconsitent Liquidity"
+  },
+  {
+    "chainId": 1,
+    "address": "0xf8ad7dfe656188a23e89da09506adf7ad9290d5d",
+    "name": "Blocery",
+    "symbol": "BLY",
+    "decimals": 18,
+    "logoURI": "https://assets.coingecko.com/coins/images/12095/thumb/Blocery_logo_200x200_.png?1597046107",
+    "dexguru": {
+      "address": "0xf8ad7dfe656188a23e89da09506adf7ad9290d5d",
+      "volume_24h": 0,
+      "liquidity": 0,
+      "volume_24h_usd": 0,
+      "liquidity_usd": 0,
+      "price_usd": 0.041071912479751616,
+      "volume_24h_delta": 0,
+      "liquidity_24h_delta": 0,
+      "price_24h_delta": 0,
+      "volume_24h_delta_usd": 0,
+      "liquidity_24h_delta_usd": 0,
+      "price_24h_delta_usd": 0,
+      "timestamp": 0
+    },
+    "issue": "Inconsitent Liquidity"
+  }
+]

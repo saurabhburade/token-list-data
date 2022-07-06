@@ -23,7 +23,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Fetch and save TOKENS data
-        run: yarn start
+        run: yarn start-eth
         env:
           DEX_GURU_KEY: ${{ secrets.DEX_GURU_KEY }}
 
