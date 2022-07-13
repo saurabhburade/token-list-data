@@ -9,6 +9,7 @@
     "start-avax":"node avax.js",
     "start-polygon":"node polygon.js",
     "start-fantom":"node fantom.js",
+    "start-arbitrum":"node arbitrum.js",
     "start-cronos":"node cronos.js"
   },
   "dependencies": {
