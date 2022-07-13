@@ -1,6 +1,5 @@
 require("dotenv").config();
 const axios = require("axios");
-const TOKEN_LIST = require("./data/avax_tokens.json");
 const _ = require("lodash");
 const fs = require("fs");
 
@@ -11,6 +10,12 @@ function sleep(delay) {
   console.log("____SLEEEP___END");
 }
 const fetchavaxtokens = async () => {
+    const TOKEN_LIST = await axios
+      .get(
+        "https://raw.githubusercontent.com/traderjoe-xyz/joe-tokenlists/main/joe.tokenlist.json"
+      )
+      .then((res) => res.data)
+      .catch((err) => []);
   let processedTokens = [];
   console.time("TOTAL_TIME");
   for (let index = 0; index < TOKEN_LIST.tokens.length; index++) {
