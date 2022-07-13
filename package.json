@@ -8,7 +8,8 @@
     "start-eth":"node ethereum.js",
     "start-avax":"node avax.js",
     "start-polygon":"node polygon.js",
-    "start-fantom":"node fantom.js"
+    "start-fantom":"node fantom.js",
+    "start-cronos":"node cronos.js"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.6.4",
